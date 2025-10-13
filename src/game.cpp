@@ -20,10 +20,10 @@ public:
     Tictactoe() : board(3, vector<char>(3, ' ')), player('X'), gameover(false) {}
 
     void Display() {
-        cout << "___________";
+        cout << "___________\n";
         for (int i = 0; i < 3; i++) {
             cout << " " << board[i][0] << " | " << board[i][1] << " | " << board[i][2] << " \n";
-            cout << "___________";
+            cout << "___________\n";
         }
     }
 
@@ -88,22 +88,22 @@ public:
 
             // Ввод и проверка корректности ввода
             while (!validInput) {
-                cout << "Введите строку (0-2): ";
+                cout << "Введите строку (1-3): ";
                 if (!(cin >> row)) {
                     cout << "Ошибка ввода! Введите число.\n";
                     cin.clear();
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     continue;
                 }
-
-                cout << "Введите столбец (0-2): ";
+                row--;
+                cout << "Введите столбец (1-3): ";
                 if (!(cin >> col)) {
                     cout << "Ошибка ввода! Введите число.\n";
                     cin.clear();
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     continue;
                 }
-
+                col--;
                 if (IsMoveValid(row, col)) {
                     validInput = true;
                 } else {
